@@ -33,13 +33,13 @@ public class ExceptionMapper {
             case 13:
                 return new ApiRuntimeException(error.getErrorMsg());
             case 14:
-                return new ApiCaptchaException(error.getErrorMsg());
+                return new ApiCaptchaException(error.getErrorMsg(), error.getCaptchaSid(), error.getCaptchaImg());
             case 15:
                 return new ApiAccessException(error.getErrorMsg());
             case 16:
                 return new ApiAuthHttpsException(error.getErrorMsg());
             case 17:
-                return new ApiAuthValidationException(error.getErrorMsg());
+                return new ApiAuthValidationException(error.getErrorMsg(), error.getRedirectUri());
             case 18:
                 return new ApiUserDeletedException(error.getErrorMsg());
             case 19:
@@ -53,7 +53,7 @@ public class ExceptionMapper {
             case 23:
                 return new ApiMethodDisabledException(error.getErrorMsg());
             case 24:
-                return new ApiNeedConfirmationException(error.getErrorMsg());
+                return new ApiNeedConfirmationException(error.getErrorMsg(), error.getConfirmationText());
             case 3609:
                 return new ApiTokenExtensionRequiredException(error.getErrorMsg());
             case 25:

@@ -11,6 +11,31 @@ import java.util.Objects;
  * Error object
  */
 public class Error implements Validable {
+
+    /**
+     * Captcha id
+     */
+    @SerializedName("captcha_sid")
+    private String captchaSid;
+
+    /**
+     * Captcha image url
+     */
+    @SerializedName("captcha_img")
+    private String captchaImg;
+
+    /**
+     * Confirmation text for user
+     */
+    @SerializedName("confirmation_text")
+    private String confirmationText;
+
+    /**
+     * Redirect uri for validation request
+     */
+    @SerializedName("redirect_uri")
+    private String redirectUri;
+	
     /**
      * Error code
      */
@@ -49,6 +74,22 @@ public class Error implements Validable {
 
     public Integer getErrorSubcode() {
         return errorSubcode;
+    }
+
+    public String getCaptchaImg() {
+        return captchaImg;
+    }
+
+    public String getCaptchaSid() {
+        return captchaSid;
+    }
+
+    public String getConfirmationText() {
+        return confirmationText;
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
     }
 
     public Error setErrorSubcode(Integer errorSubcode) {
@@ -113,6 +154,10 @@ public class Error implements Validable {
         sb.append(", requestParams=").append(requestParams);
         sb.append(", errorCode=").append(errorCode);
         sb.append(", errorSubcode=").append(errorSubcode);
+        sb.append(", captchaSid='").append(captchaSid).append("'");
+        sb.append(", captchaImg='").append(captchaImg).append("'");
+        sb.append(", confirmationText='").append(confirmationText).append("'");
+        sb.append(", redirectUri='").append(redirectUri).append("'");
         sb.append('}');
         return sb.toString();
     }
