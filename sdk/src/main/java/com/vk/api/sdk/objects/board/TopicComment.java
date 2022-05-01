@@ -59,6 +59,30 @@ public class TopicComment implements Validable {
 
     @SerializedName("likes")
     private LikesInfo likes;
+    
+    @SerializedName("topic_owner_id")
+    private Integer topicOwnerId;
+
+    @SerializedName("topic_id")
+    private Integer topicId;
+
+    public Integer getTopicOwnerId() {
+        return topicOwnerId;
+    }
+
+    public TopicComment setTopicOwnerId(Integer topicOwnerId) {
+        this.topicOwnerId = topicOwnerId;
+        return this;
+    }
+
+    public Integer getTopicId() {
+        return topicId;
+    }
+
+    public TopicComment setTopicId(Integer topicId) {
+        this.topicId = topicId;
+        return this;
+    }
 
     public List<CommentAttachment> getAttachments() {
         return attachments;
