@@ -2,12 +2,19 @@ subprojects {
     apply plugin: 'java'
 
     group 'com.vk.api'
-    version '1.0.16'
+    version '1.0.16.m3'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-    tasks.withType(Javadoc) {
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Javadoc).configureEach {
+        options.encoding = 'UTF-8'
+        options.charSet = 'UTF-8'
+        options.docEncoding = 'UTF-8'
         options.addStringOption('Xdoclint:none', '-quiet')
     }
 

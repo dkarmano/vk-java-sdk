@@ -45,9 +45,18 @@ artifacts {
 }
 
 signing {
-    required { releaseBuild && gradle.taskGraph.hasTask("publishing") }
-    useGpgCmd()
-    sign publishing.publications
+    def isPublishingToRemoteMaven = gradle.startParameter.taskNames.any { taskName ->
+        def normalizedTaskName = taskName.toLowerCase()
+        normalizedTaskName == 'publish'
+                || normalizedTaskName.endsWith(':publish')
+                || normalizedTaskName.contains('tomavenrepository')
+    }
+
+    if (isPublishingToRemoteMaven) {
+        required { releaseBuild }
+        useGpgCmd()
+        sign publishing.publications
+    }
 }
 
 java {

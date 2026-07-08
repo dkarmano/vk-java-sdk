@@ -72,7 +72,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
     }
 
     /**
-     * '1' - to post the comment from a community name (only if 'owner_id'<0)
+     * '1' - to post the comment from a community name (only if {@code owner_id < 0})
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
