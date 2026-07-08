@@ -8,11 +8,18 @@ public class ApiNeedConfirmationException extends ApiException {
 
     public static final String ERROR_DESCRIPTION = "Confirmation required";
 
-    public ApiNeedConfirmationException(Error error) {
+    private String confirmationText;
+
+    public ApiNeedConfirmationException(Error error, String confirmationText) {
         super(error.setErrorText(ERROR_DESCRIPTION));
+        this.confirmationText = confirmationText;
     }
 
     public ApiNeedConfirmationException() {
         super(new Error().setErrorCode(ERROR_CODE).setErrorText(ERROR_DESCRIPTION));
+    }
+
+    public String getConfirmationText() {
+        return confirmationText;
     }
 }

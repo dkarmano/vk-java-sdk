@@ -8,11 +8,18 @@ public class ApiAuthValidationException extends ApiException {
 
     public static final String ERROR_DESCRIPTION = "Validation required";
 
-    public ApiAuthValidationException(Error error) {
+    private String redirectUri;
+
+    public ApiAuthValidationException(Error error, String redirectUri) {
         super(error.setErrorText(ERROR_DESCRIPTION));
+        this.redirectUri = redirectUri;
     }
 
     public ApiAuthValidationException() {
         super(new Error().setErrorCode(ERROR_CODE).setErrorText(ERROR_DESCRIPTION));
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
     }
 }

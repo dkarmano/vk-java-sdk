@@ -8,11 +8,25 @@ public class ApiCaptchaException extends ApiException {
 
     public static final String ERROR_DESCRIPTION = "Captcha needed";
 
-    public ApiCaptchaException(Error error) {
+    private String sid;
+
+    private String image;
+
+    public ApiCaptchaException(Error error, String sid, String image) {
         super(error.setErrorText(ERROR_DESCRIPTION));
+        this.sid = sid;
+        this.image = image;
     }
 
     public ApiCaptchaException() {
         super(new Error().setErrorCode(ERROR_CODE).setErrorText(ERROR_DESCRIPTION));
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

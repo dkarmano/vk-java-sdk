@@ -33,13 +33,13 @@ public class ExceptionMapper {
             case 13:
                 return new ApiRuntimeException(error);
             case 14:
-                return new ApiCaptchaException(error);
+                return new ApiCaptchaException(error, error.getCaptchaSid(), error.getCaptchaImg());
             case 15:
                 return new ApiAccessException(error);
             case 16:
                 return new ApiAuthHttpsException(error);
             case 17:
-                return new ApiAuthValidationException(error);
+                return new ApiAuthValidationException(error, error.getRedirectUri());
             case 18:
                 return new ApiUserDeletedException(error);
             case 19:
@@ -59,7 +59,7 @@ public class ExceptionMapper {
             case 7703:
                 return new ApiAsrInvalidHashException(error);
             case 24:
-                return new ApiNeedConfirmationException(error);
+                return new ApiNeedConfirmationException(error, error.getConfirmationText());
             case 7704:
                 return new ApiAsrNotFoundException(error);
             case 3609:

@@ -14,6 +14,31 @@ import java.util.Objects;
  * Error object
  */
 public class Error implements PrettyCardOrError, Validable {
+
+    /**
+     * Captcha id
+     */
+    @SerializedName("captcha_sid")
+    private String captchaSid;
+
+    /**
+     * Captcha image url
+     */
+    @SerializedName("captcha_img")
+    private String captchaImg;
+
+    /**
+     * Confirmation text for user
+     */
+    @SerializedName("confirmation_text")
+    private String confirmationText;
+
+    /**
+     * Redirect uri for validation request
+     */
+    @SerializedName("redirect_uri")
+    private String redirectUri;
+
     /**
      * Error code
      */
@@ -57,6 +82,22 @@ public class Error implements PrettyCardOrError, Validable {
 
     public String getErrorMsg() {
         return errorMsg;
+    }
+
+    public String getCaptchaImg() {
+        return captchaImg;
+    }
+
+    public String getCaptchaSid() {
+        return captchaSid;
+    }
+
+    public String getConfirmationText() {
+        return confirmationText;
+    }
+
+    public String getRedirectUri() {
+        return redirectUri;
     }
 
     public Error setErrorMsg(String errorMsg) {
@@ -132,6 +173,10 @@ public class Error implements PrettyCardOrError, Validable {
         sb.append(", requestParams=").append(requestParams);
         sb.append(", errorCode=").append(errorCode);
         sb.append(", errorSubcode=").append(errorSubcode);
+        sb.append(", captchaSid='").append(captchaSid).append("'");
+        sb.append(", captchaImg='").append(captchaImg).append("'");
+        sb.append(", confirmationText='").append(confirmationText).append("'");
+        sb.append(", redirectUri='").append(redirectUri).append("'");
         sb.append('}');
         return sb.toString();
     }
