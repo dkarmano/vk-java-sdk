@@ -63,6 +63,30 @@ public class TopicComment implements Validable {
     @Required
     private String text;
 
+    @SerializedName("topic_owner_id")
+    private Long topicOwnerId;
+
+    @SerializedName("topic_id")
+    private Integer topicId;
+
+    public Long getTopicOwnerId() {
+        return topicOwnerId;
+    }
+
+    public TopicComment setTopicOwnerId(Long topicOwnerId) {
+        this.topicOwnerId = topicOwnerId;
+        return this;
+    }
+
+    public Integer getTopicId() {
+        return topicId;
+    }
+
+    public TopicComment setTopicId(Integer topicId) {
+        this.topicId = topicId;
+        return this;
+    }
+
     public List<CommentAttachment> getAttachments() {
         return attachments;
     }
@@ -151,7 +175,9 @@ public class TopicComment implements Validable {
                 Objects.equals(canEdit, topicComment.canEdit) &&
                 Objects.equals(id, topicComment.id) &&
                 Objects.equals(text, topicComment.text) &&
-                Objects.equals(likes, topicComment.likes);
+                Objects.equals(likes, topicComment.likes) &&
+                Objects.equals(topicOwnerId, topicComment.topicOwnerId) &&
+                Objects.equals(topicId, topicComment.topicId);
     }
 
     @Override
@@ -170,6 +196,8 @@ public class TopicComment implements Validable {
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", likes=").append(likes);
+        sb.append(", topicOwnerId=").append(topicOwnerId);
+        sb.append(", topicId=").append(topicId);
         sb.append('}');
         return sb.toString();
     }
